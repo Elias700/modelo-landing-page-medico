@@ -219,30 +219,6 @@ address {
   background: var(--color-sage);
 }
 
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  font-family: var(--font-body);
-  font-size: var(--fs-xs);
-  font-weight: 600;
-  letter-spacing: var(--tracking-eyebrow);
-  text-transform: uppercase;
-  color: var(--color-green);
-}
-
-.eyebrow::before {
-  content: '';
-  width: 2.25rem;
-  height: 1px;
-  background: currentColor;
-  opacity: 0.6;
-}
-
-.section--dark .eyebrow {
-  color: var(--color-champagne);
-}
-
 .lead {
   font-size: var(--fs-lg);
   line-height: 1.55;

@@ -23,7 +23,6 @@ export interface FaqItem {
 }
 
 export const HERO_CONTENT = {
-  eyebrow: 'Dra. Ana Sales — Clínica Geral',
   title: 'Sua saúde merece um olhar atento e um cuidado especial.',
   emphasis: 'cuidado especial.',
   subtitle:
@@ -32,7 +31,6 @@ export const HERO_CONTENT = {
 } as const;
 
 export const ABOUT_CONTENT = {
-  eyebrow: 'Sobre mim',
   title: 'Muito prazer, sou a Dra. Ana Sales.',
   emphasis: 'Dra. Ana Sales.',
   subtitle: 'Um cuidado que começa pela escuta e respeita a individualidade de cada paciente.',
@@ -74,7 +72,6 @@ export const SERVICES: readonly ServiceItem[] = [
 ];
 
 export const PREVENTION_CONTENT = {
-  eyebrow: 'Prevenção',
   title: 'Cuidar da saúde também é prevenir.',
   emphasis: 'prevenir.',
   body: 'O acompanhamento médico permite avaliar fatores de risco, orientar hábitos de saúde e identificar necessidades de investigação e cuidado de forma individualizada.',

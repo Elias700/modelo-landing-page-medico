@@ -1,6 +1,3 @@
-@if (eyebrow(); as eyebrowText) {
-  <p class="eyebrow" appReveal [revealDistance]="16">{{ eyebrowText }}</p>
-}
 @let parts = titleParts();
 <h2 class="title" [id]="headingId()" appSplitText>
   {{ parts.before }}

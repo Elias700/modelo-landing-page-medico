@@ -3,7 +3,7 @@ import { RevealDirective } from '../../directives/reveal.directive';
 import { SplitTextDirective } from '../../directives/split-text.directive';
 
 /**
- * Cabeçalho editorial de seção (eyebrow + h2 + subtítulo).
+ * Cabeçalho editorial de seção (h2 + subtítulo).
  * `emphasis` destaca, em itálico, um trecho que exista dentro de `title`.
  */
 @Component({
@@ -19,7 +19,6 @@ import { SplitTextDirective } from '../../directives/split-text.directive';
 export class SectionHeading {
   readonly title = input.required<string>();
   readonly headingId = input.required<string>();
-  readonly eyebrow = input<string | null>(null);
   readonly subtitle = input<string | null>(null);
   readonly emphasis = input<string | null>(null);
   readonly align = input<'start' | 'center'>('start');

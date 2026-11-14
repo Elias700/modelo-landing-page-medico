@@ -9,10 +9,6 @@
   color: var(--color-ivory);
 }
 
-.contact .eyebrow {
-  color: var(--color-sage);
-}
-
 .grid {
   display: grid;
   gap: var(--space-xl);
