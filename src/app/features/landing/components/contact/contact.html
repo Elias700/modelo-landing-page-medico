@@ -1,0 +1,131 @@
+<section id="contato" class="section contact" aria-labelledby="contact-title">
+  <div class="container grid">
+    <div class="copy">
+      <p class="eyebrow" appReveal [revealDistance]="16">Contato e agendamento</p>
+      <h2 id="contact-title" class="title" appSplitText>
+        O primeiro passo para cuidar da sua saúde <em>começa aqui.</em>
+      </h2>
+      <p class="lead" appReveal [revealDelay]="0.2">
+        Entre em contato para obter informações e agendar sua consulta.
+      </p>
+
+      @if (site.whatsappUrl; as whatsappUrl) {
+        <div appReveal [revealDelay]="0.3">
+          <a
+            appButton
+            variant="light"
+            label="Agendar pelo WhatsApp"
+            [href]="whatsappUrl"
+            target="_blank"
+            rel="noopener"
+            aria-describedby="new-tab-hint"
+          ></a>
+          <span id="new-tab-hint" class="visually-hidden">(abre em nova aba)</span>
+        </div>
+      }
+
+      @if (hasAnyInfo || site.showPending) {
+        <ul class="channels" role="list" appReveal revealStagger=".channel">
+          @if (site.whatsappUrl; as whatsappUrl) {
+            <li class="channel">
+              <app-icon name="chat" />
+              <div>
+                <span class="channel__label">WhatsApp</span>
+                <a class="channel__value" [href]="whatsappUrl" target="_blank" rel="noopener">
+                  Enviar mensagem<span class="visually-hidden"> (abre em nova aba)</span>
+                </a>
+              </div>
+            </li>
+          } @else if (site.showPending) {
+            <li class="channel">
+              <app-icon name="chat" />
+              <div>
+                <span class="channel__label">WhatsApp</span>
+                <app-pending label="Número do WhatsApp" />
+              </div>
+            </li>
+          }
+
+          @if (site.phoneHref; as phoneHref) {
+            <li class="channel">
+              <app-icon name="phone" />
+              <div>
+                <span class="channel__label">Telefone</span>
+                <a class="channel__value" [href]="phoneHref">{{ contact.phone }}</a>
+              </div>
+            </li>
+          } @else if (site.showPending) {
+            <li class="channel">
+              <app-icon name="phone" />
+              <div>
+                <span class="channel__label">Telefone</span>
+                <app-pending label="Telefone" />
+              </div>
+            </li>
+          }
+
+          @if (site.addressLines.length || clinic.mapsUrl) {
+            <li class="channel">
+              <app-icon name="pin" />
+              <div>
+                <span class="channel__label">Endereço</span>
+                <address class="channel__value">
+                  @for (line of site.addressLines; track line) {
+                    <span class="line">{{ line }}</span>
+                  }
+                </address>
+                @if (clinic.mapsUrl) {
+                  <a class="channel__link" [href]="clinic.mapsUrl" target="_blank" rel="noopener"
+                    >Como chegar<span class="visually-hidden"> (abre em nova aba)</span></a
+                  >
+                }
+              </div>
+            </li>
+          } @else if (site.showPending) {
+            <li class="channel">
+              <app-icon name="pin" />
+              <div>
+                <span class="channel__label">Endereço e localização</span>
+                <app-pending label="Endereço e link do mapa" />
+              </div>
+            </li>
+          }
+
+          @if (clinic.openingHours.length) {
+            <li class="channel">
+              <app-icon name="clock" />
+              <div>
+                <span class="channel__label">Horários</span>
+                @for (slot of clinic.openingHours; track slot.days) {
+                  <span class="channel__value line">{{ slot.days }} · {{ slot.hours }}</span>
+                }
+              </div>
+            </li>
+          } @else if (site.showPending) {
+            <li class="channel">
+              <app-icon name="clock" />
+              <div>
+                <span class="channel__label">Horários</span>
+                <app-pending label="Horários" />
+              </div>
+            </li>
+          }
+        </ul>
+      }
+
+      @if (!site.hasContactChannel && !site.showPending) {
+        <p class="notice">Os canais de agendamento serão divulgados em breve.</p>
+      }
+    </div>
+
+    <app-media-frame
+      class="photo"
+      src="/images/ana-sales-jaleco-no-braco.jpg"
+      alt="Dra. Ana Sales sorrindo, com o jaleco branco apoiado no braço."
+      [width]="854"
+      [height]="1280"
+      [parallax]="6"
+      revealOrigin="right"
+    />
+  </div>
+</section>

@@ -1,0 +1,115 @@
+:host {
+  display: block;
+}
+
+.consultation {
+  background: var(--color-sage);
+}
+
+.timeline {
+  --progress: 1;
+  --node: 3.5rem;
+  position: relative;
+  margin-top: var(--space-xl);
+}
+
+/* Trilha vertical (mobile) */
+.track {
+  position: absolute;
+  top: calc(var(--node) / 2);
+  bottom: calc(var(--node) / 2);
+  left: calc(var(--node) / 2);
+  width: 1px;
+  background: rgb(32 52 47 / 0.18);
+}
+
+.track__fill {
+  position: absolute;
+  inset: 0;
+  background: var(--color-green-deep);
+  transform: scaleY(var(--progress));
+  transform-origin: top;
+}
+
+.steps {
+  display: grid;
+  gap: var(--space-lg);
+  margin: 0;
+}
+
+.step {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--node) 1fr;
+  column-gap: var(--space-md);
+  row-gap: var(--space-2xs);
+}
+
+.step__node {
+  grid-row: span 2;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--node);
+  height: var(--node);
+  border: 1px solid rgb(32 52 47 / 0.25);
+  border-radius: 50%;
+  background: var(--color-sage);
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-style: italic;
+  transition:
+    background-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+}
+
+.step.is-reached .step__node {
+  background: var(--color-green-deep);
+  border-color: var(--color-green-deep);
+  color: var(--color-ivory);
+}
+
+.step__title {
+  align-self: end;
+  font-size: var(--fs-xl);
+  line-height: 1.15;
+}
+
+.step__text {
+  max-width: 22rem;
+  color: var(--color-ink-soft);
+}
+
+/* Trilha horizontal (desktop) */
+@media (min-width: 900px) {
+  .track {
+    top: calc(var(--node) / 2);
+    bottom: auto;
+    left: calc(var(--node) / 2);
+    right: calc(var(--node) / 2);
+    width: auto;
+    height: 1px;
+  }
+
+  .track__fill {
+    transform: scaleX(var(--progress));
+    transform-origin: left;
+  }
+
+  .steps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-md);
+  }
+
+  .step {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-sm);
+    padding-right: var(--space-sm);
+  }
+
+  .step__node {
+    grid-row: auto;
+    margin-bottom: var(--space-sm);
+  }
+}

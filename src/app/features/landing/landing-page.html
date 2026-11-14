@@ -1,0 +1,18 @@
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<app-header />
+
+<main id="conteudo" tabindex="-1">
+  <app-hero />
+  <app-about />
+  <app-services />
+  <app-prevention />
+  <app-consultation />
+  @if (showClinic) {
+    <app-clinic />
+  }
+  <app-faq />
+  <app-contact />
+</main>
+
+<app-footer />

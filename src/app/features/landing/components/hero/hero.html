@@ -1,0 +1,61 @@
+<section id="inicio" class="hero" aria-labelledby="hero-title">
+  <div class="container grid">
+    <div class="copy">
+      <p class="eyebrow" appReveal revealTrigger="load" [revealDelay]="0.05" [revealDistance]="16">
+        {{ content.eyebrow }}
+      </p>
+
+      <h1 id="hero-title" class="title" appSplitText splitTrigger="load" [splitDelay]="0.15">
+        {{ titleBefore }}<em>{{ content.emphasis }}</em>
+      </h1>
+
+      <p class="lead subtitle" appReveal revealTrigger="load" [revealDelay]="0.45">
+        {{ content.subtitle }}
+      </p>
+
+      <div class="actions" appReveal revealTrigger="load" [revealDelay]="0.6" revealStagger="a">
+        <a
+          appButton
+          label="Agendar consulta"
+          [href]="site.primaryCtaHref"
+          [attr.target]="site.primaryCtaIsExternal ? '_blank' : null"
+          [attr.rel]="site.primaryCtaIsExternal ? 'noopener' : null"
+        ></a>
+        <a appButton label="Conheça a médica" variant="outline" icon="down" href="#sobre"></a>
+      </div>
+    </div>
+
+    <div class="visual">
+      <div class="backdrop" [appParallax]="-6" aria-hidden="true"></div>
+      <app-media-frame
+        class="portrait"
+        src="/images/ana-sales-jaleco-estetoscopio.jpg"
+        alt="Dra. Ana Sales de jaleco branco, com os braços cruzados e um estetoscópio na mão, sorrindo."
+        [width]="854"
+        [height]="1280"
+        [priority]="true"
+        [parallax]="6"
+        reveal="load"
+        [revealDelay]="0.05"
+        [revealOnCompact]="false"
+      />
+      <ul
+        class="pillars"
+        role="list"
+        appReveal
+        revealTrigger="load"
+        [revealDelay]="0.9"
+        revealStagger="li"
+      >
+        @for (pillar of content.pillars; track pillar) {
+          <li>{{ pillar }}</li>
+        }
+      </ul>
+    </div>
+  </div>
+
+  <a class="scroll-cue" href="#sobre" appReveal revealTrigger="load" [revealDelay]="1.1">
+    <span class="scroll-cue__line" aria-hidden="true"></span>
+    <span>Role para conhecer</span>
+  </a>
+</section>

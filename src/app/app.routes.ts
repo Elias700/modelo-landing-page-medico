@@ -1,3 +1,7 @@
 import { Routes } from '@angular/router';
+import { LandingPage } from './features/landing/landing-page';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  { path: '', component: LandingPage, title: 'Dra. Ana Sales | Clínica Geral' },
+  { path: '**', redirectTo: '' },
+];

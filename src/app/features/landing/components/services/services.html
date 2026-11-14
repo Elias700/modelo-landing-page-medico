@@ -1,0 +1,30 @@
+<section id="servicos" class="section services" aria-labelledby="services-title">
+  <div class="container grid">
+    <div class="intro">
+      <app-section-heading
+        headingId="services-title"
+        eyebrow="Serviços"
+        title="Cuidado completo para diferentes momentos da sua vida."
+        emphasis="momentos da sua vida."
+        subtitle="Da prevenção ao acompanhamento clínico, um atendimento voltado às necessidades individuais de cada paciente."
+      />
+    </div>
+
+    <ol class="list" role="list" appReveal revealStagger=".item">
+      @for (service of services; track service.title; let i = $index) {
+        <li class="item">
+          <article class="card" [appTilt]="3">
+            <div class="card__top">
+              <span class="card__index" aria-hidden="true"
+                >{{ i + 1 < 10 ? '0' : '' }}{{ i + 1 }}</span
+              >
+              <app-icon class="card__icon" [name]="service.icon" />
+            </div>
+            <h3 class="card__title">{{ service.title }}</h3>
+            <p class="card__text">{{ service.description }}</p>
+          </article>
+        </li>
+      }
+    </ol>
+  </div>
+</section>

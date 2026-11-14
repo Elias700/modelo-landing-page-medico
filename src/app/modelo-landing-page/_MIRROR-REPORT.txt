@@ -1,0 +1,30 @@
+VibeCloner — Relatório de Mirror
+==================================
+URL: https://www.verostudio.com/
+Capturado em: 2026-11-12T12:22:43.090Z
+
+Recursos detectados na página: 608
+Assets estáticos tentados: 400
+Baixados para o mirror: 393
+Falharam: 7
+
+FALHAS (URL — tipo — erro):
+---------------------------
+[img] Arquivo muito grande
+    https://cdn.sanity.io/images/xei5vqg0/production/a43a60914f1f76d948a2cf72a4c0e4759efda568-1104x1424.png?w=3840&q=75&auto=format
+[img] Arquivo muito grande
+    https://cdn.sanity.io/images/xei5vqg0/production/082bf91549fedb9a30fa95d86d85384d3a4e600d-1086x1448.png?w=3840&q=75&auto=format
+[img] Arquivo muito grande
+    https://cdn.sanity.io/images/xei5vqg0/production/bf1d31c49733d5cbb2153d3de56e842d333e76c7-1106x1422.png?w=3840&q=75&auto=format
+[img] Arquivo muito grande
+    https://cdn.sanity.io/images/xei5vqg0/production/8d0d9c1168d88f934e97c750e95132558ebfb87e-1086x1448.png?w=3840&q=75&auto=format
+[img] Arquivo muito grande
+    https://cdn.sanity.io/images/xei5vqg0/production/2974f2ef35e6f185f74b5acc2324293e36282896-1086x1448.png?w=3840&q=75&auto=format
+[img] Arquivo muito grande
+    https://cdn.sanity.io/images/xei5vqg0/production/e828380577a3147ff6c0043c34b39cf1e0136fa4-941x1671.png?w=3840&q=75&auto=format
+[img] Arquivo muito grande
+    https://cdn.sanity.io/images/xei5vqg0/production/96e802cc816cd4c4727437ca0fc290f7ac7b20b9-1200x1600.png?w=3840&q=75&auto=format
+
+Obs.: recursos que falharam mantêm a URL original no HTML (carregam
+da web quando o clone é servido com internet). Envie este arquivo
+para diagnóstico se algo estiver faltando.

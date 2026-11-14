@@ -1,0 +1,30 @@
+<div
+  class="frame"
+  [appImageReveal]="reveal()"
+  [revealOrigin]="revealOrigin()"
+  [revealDelay]="revealDelay()"
+  [revealOnCompact]="revealOnCompact()"
+  [style.aspect-ratio]="aspectRatio()"
+>
+  <div class="media" [appParallax]="parallax()" [style.--overscan]="overscan()">
+    <picture>
+      @if (animatedSrc(); as gif) {
+        <source
+          [attr.srcset]="gif"
+          media="(prefers-reduced-motion: no-preference)"
+          type="image/gif"
+        />
+      }
+      <img
+        [src]="src()"
+        [alt]="alt()"
+        [width]="width()"
+        [height]="height()"
+        [style.object-position]="objectPosition()"
+        [attr.loading]="priority() ? 'eager' : 'lazy'"
+        [attr.fetchpriority]="priority() ? 'high' : null"
+        decoding="async"
+      />
+    </picture>
+  </div>
+</div>

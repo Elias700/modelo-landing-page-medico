@@ -1,0 +1,46 @@
+<section id="prevencao" class="section section--dark prevention" aria-labelledby="prevention-title">
+  <span class="watermark" aria-hidden="true" [appParallax]="-20">Prevenir</span>
+
+  <div class="container grid">
+    <div class="copy">
+      <app-section-heading
+        headingId="prevention-title"
+        [eyebrow]="content.eyebrow"
+        [title]="content.title"
+        [emphasis]="content.emphasis"
+      />
+      <p class="lead" appReveal>{{ content.body }}</p>
+
+      <ul class="topics" role="list" appReveal revealStagger="li">
+        @for (topic of content.topics; track topic; let i = $index) {
+          <li>
+            <span class="topics__index" aria-hidden="true">0{{ i + 1 }}</span>
+            {{ topic }}
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="diptych">
+      <div class="diptych__item diptych__item--a" [appParallax]="-5">
+        <app-media-frame
+          src="/images/ana-sales-retrato-proximo.jpg"
+          alt="Retrato da Dra. Ana Sales sorrindo."
+          [width]="854"
+          [height]="1280"
+          [parallax]="6"
+        />
+      </div>
+      <div class="diptych__item diptych__item--b" [appParallax]="8">
+        <app-media-frame
+          src="/images/ana-sales-jaleco-bordado.jpg"
+          alt="Dra. Ana Sales segurando o jaleco com o nome bordado."
+          [width]="854"
+          [height]="1280"
+          [parallax]="6"
+          [revealDelay]="0.2"
+        />
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,89 @@
+<header class="bar" (keydown)="trapFocus($event)">
+  <div class="container inner">
+    <a
+      class="brand"
+      href="#inicio"
+      (click)="closeMenu()"
+      aria-label="Dra. Ana Sales — voltar ao início"
+    >
+      <span class="brand__name">Ana Sales</span>
+      <span class="brand__area">{{ site.config.doctor.practiceArea }}</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Navegação principal">
+      <ul role="list">
+        @for (item of site.navItems; track item.id) {
+          <li>
+            <a
+              class="nav-link"
+              [href]="'#' + item.id"
+              [class.is-active]="activeId() === item.id"
+              [attr.aria-current]="activeId() === item.id ? 'location' : null"
+              >{{ item.label }}</a
+            >
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <a
+      class="cta"
+      appButton
+      label="Agendar consulta"
+      [icon]="null"
+      [href]="site.primaryCtaHref"
+      [attr.target]="site.primaryCtaIsExternal ? '_blank' : null"
+      [attr.rel]="site.primaryCtaIsExternal ? 'noopener' : null"
+    ></a>
+
+    <button
+      #toggle
+      class="toggle"
+      type="button"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="menu-mobile"
+      (click)="toggleMenu()"
+    >
+      <span class="visually-hidden">{{ menuOpen() ? 'Fechar menu' : 'Abrir menu' }}</span>
+      <span class="toggle__label" aria-hidden="true">{{ menuOpen() ? 'Fechar' : 'Menu' }}</span>
+      <span class="toggle__icon" aria-hidden="true"><span></span><span></span></span>
+    </button>
+  </div>
+</header>
+
+<div
+  #panel
+  id="menu-mobile"
+  class="panel"
+  [attr.inert]="menuOpen() ? null : ''"
+  [attr.aria-hidden]="!menuOpen()"
+  (keydown)="trapFocus($event)"
+>
+  <nav class="container panel__inner" aria-label="Navegação principal (menu)">
+    <ol class="panel__list" role="list">
+      @for (item of site.navItems; track item.id; let i = $index) {
+        <li [style.--i]="i">
+          <a
+            class="panel__link"
+            [href]="'#' + item.id"
+            [class.is-active]="activeId() === item.id"
+            (click)="closeMenu()"
+          >
+            <span class="panel__index" aria-hidden="true">0{{ i + 1 }}</span>
+            {{ item.label }}
+          </a>
+        </li>
+      }
+    </ol>
+    <a
+      class="panel__cta"
+      appButton
+      variant="light"
+      label="Agendar consulta"
+      [href]="site.primaryCtaHref"
+      [attr.target]="site.primaryCtaIsExternal ? '_blank' : null"
+      [attr.rel]="site.primaryCtaIsExternal ? 'noopener' : null"
+      (click)="closeMenu()"
+    ></a>
+  </nav>
+</div>

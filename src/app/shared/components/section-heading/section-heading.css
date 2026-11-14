@@ -1,0 +1,32 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+  max-width: 52rem;
+}
+
+:host([data-align='center']) {
+  align-items: center;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.title {
+  font-size: var(--fs-3xl);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.02em;
+}
+
+.title em {
+  font-style: italic;
+  color: var(--color-green);
+}
+
+:host-context(.section--dark) .title em {
+  color: var(--color-champagne);
+}
+
+.subtitle {
+  max-width: 38rem;
+}

@@ -1,0 +1,85 @@
+<section id="consultorio" class="section clinic" aria-labelledby="clinic-title">
+  <div class="container">
+    <div class="head">
+      <app-section-heading
+        headingId="clinic-title"
+        eyebrow="Consultório"
+        title="Um espaço pensado para acolher."
+        emphasis="acolher."
+      />
+    </div>
+
+    @if (clinic.photos.length) {
+      <ul class="gallery" role="list" aria-label="Fotos do consultório" tabindex="0">
+        @for (photo of clinic.photos; track photo.src; let i = $index) {
+          <li class="gallery__item">
+            <app-media-frame
+              [src]="photo.src"
+              [alt]="photo.alt"
+              [width]="photo.width"
+              [height]="photo.height"
+              [parallax]="4"
+              [revealDelay]="i * 0.12"
+              objectPosition="50% 50%"
+            />
+          </li>
+        }
+      </ul>
+    } @else if (site.showPending) {
+      <ul class="gallery" role="list">
+        @for (slot of placeholderSlots; track slot) {
+          <li class="gallery__item placeholder">
+            <app-icon name="image" />
+            <app-pending label="Foto real do consultório" />
+          </li>
+        }
+      </ul>
+    }
+
+    <dl class="info" appReveal revealStagger=".info__item">
+      @if (site.addressLines.length || clinic.mapsUrl || site.showPending) {
+        <div class="info__item">
+          <dt><app-icon name="pin" /> Endereço</dt>
+          <dd>
+            @for (line of site.addressLines; track line) {
+              <span class="line">{{ line }}</span>
+            } @empty {
+              <app-pending label="Endereço e cidade" />
+            }
+            @if (clinic.mapsUrl) {
+              <a class="link" [href]="clinic.mapsUrl" target="_blank" rel="noopener"
+                >Ver localização no mapa<span class="visually-hidden"> (abre em nova aba)</span></a
+              >
+            }
+          </dd>
+        </div>
+      }
+
+      @if (clinic.openingHours.length || site.showPending) {
+        <div class="info__item">
+          <dt><app-icon name="clock" /> Horários</dt>
+          <dd>
+            @for (slot of clinic.openingHours; track slot.days) {
+              <span class="line">{{ slot.days }} · {{ slot.hours }}</span>
+            } @empty {
+              <app-pending label="Horários de atendimento" />
+            }
+          </dd>
+        </div>
+      }
+
+      @if (clinic.modalities.length || site.showPending) {
+        <div class="info__item">
+          <dt><app-icon name="calendar" /> Modalidades</dt>
+          <dd>
+            @for (modality of clinic.modalities; track modality) {
+              <span class="line">{{ modality }}</span>
+            } @empty {
+              <app-pending label="Presencial / teleconsulta" />
+            }
+          </dd>
+        </div>
+      }
+    </dl>
+  </div>
+</section>

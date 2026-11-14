@@ -1,0 +1,120 @@
+:host {
+  --btn-bg: var(--color-green-deep);
+  --btn-fg: var(--color-ivory);
+  --btn-border: var(--color-green-deep);
+  --btn-fill: var(--color-green);
+  --btn-fg-hover: var(--color-ivory);
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 3.25rem;
+  padding: 0 1.6rem;
+  border: 1px solid var(--btn-border);
+  border-radius: var(--radius-pill);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  transition:
+    color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+}
+
+:host::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--btn-fill);
+  transform: translateY(101%);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+:host(:hover),
+:host(:focus-visible) {
+  color: var(--btn-fg-hover);
+  border-color: var(--btn-fill);
+}
+
+:host(:hover)::before,
+:host(:focus-visible)::before {
+  transform: translateY(0);
+}
+
+:host([data-variant='outline']) {
+  --btn-bg: transparent;
+  --btn-fg: var(--color-green-deep);
+  --btn-border: rgb(32 52 47 / 0.35);
+  --btn-fill: var(--color-green-deep);
+}
+
+:host([data-variant='light']) {
+  --btn-bg: var(--color-ivory);
+  --btn-fg: var(--color-green-deep);
+  --btn-border: var(--color-ivory);
+  --btn-fill: var(--color-champagne);
+  --btn-fg-hover: var(--color-green-deep);
+}
+
+:host([data-variant='outline-light']) {
+  --btn-bg: transparent;
+  --btn-fg: var(--color-ivory);
+  --btn-border: rgb(247 245 240 / 0.4);
+  --btn-fill: var(--color-ivory);
+  --btn-fg-hover: var(--color-green-deep);
+}
+
+.label {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  line-height: 1.4;
+}
+
+.text {
+  display: block;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.clone {
+  position: absolute;
+  inset: 0;
+  transform: translateY(105%);
+}
+
+:host(:hover) .text,
+:host(:focus-visible) .text {
+  transform: translateY(-105%);
+}
+
+:host(:hover) .clone,
+:host(:focus-visible) .clone {
+  transform: translateY(0);
+}
+
+.icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.icon[data-icon='down'] {
+  transform: rotate(90deg);
+}
+
+:host(:hover) .icon[data-icon='arrow'] {
+  transform: translateX(4px);
+}
+
+:host(:hover) .icon[data-icon='down'] {
+  transform: rotate(90deg) translateX(3px);
+}

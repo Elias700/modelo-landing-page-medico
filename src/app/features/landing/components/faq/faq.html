@@ -1,0 +1,52 @@
+<section id="perguntas-frequentes" class="section faq" aria-labelledby="faq-title">
+  <div class="container grid">
+    <div class="intro">
+      <app-section-heading
+        headingId="faq-title"
+        eyebrow="Perguntas frequentes"
+        title="Suas dúvidas, nossas respostas."
+        emphasis="nossas respostas."
+      />
+      <div class="intro__cta" appReveal>
+        <p>Não encontrou o que procurava?</p>
+        <a appButton variant="outline" label="Fale conosco" href="#contato"></a>
+      </div>
+    </div>
+
+    <div class="list" appReveal revealStagger=".item">
+      @for (item of items; track item.question; let i = $index) {
+        @let open = openIndex() === i;
+        <div class="item" [class.is-open]="open">
+          <h3 class="question">
+            <button
+              class="trigger"
+              type="button"
+              [id]="'faq-trigger-' + i"
+              [attr.aria-expanded]="open"
+              [attr.aria-controls]="'faq-panel-' + i"
+              (click)="toggle(i)"
+              (keydown)="onKeydown($event, i)"
+            >
+              <span class="trigger__index" aria-hidden="true"
+                >{{ i + 1 < 10 ? '0' : '' }}{{ i + 1 }}</span
+              >
+              <span class="trigger__text">{{ item.question }}</span>
+              <span class="trigger__icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div
+            class="panel"
+            role="region"
+            [id]="'faq-panel-' + i"
+            [attr.aria-labelledby]="'faq-trigger-' + i"
+            [attr.inert]="open ? null : ''"
+          >
+            <div class="panel__inner">
+              <p>{{ item.answer }}</p>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

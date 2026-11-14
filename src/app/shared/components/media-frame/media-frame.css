@@ -1,0 +1,27 @@
+:host {
+  display: block;
+}
+
+.frame {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  border-radius: var(--radius-sm);
+  background: var(--color-sage);
+}
+
+.media {
+  --overscan: 0%;
+  position: absolute;
+  inset: calc(-1 * var(--overscan)) 0;
+}
+
+picture,
+img {
+  width: 100%;
+  height: 100%;
+}
+
+img {
+  object-fit: cover;
+}

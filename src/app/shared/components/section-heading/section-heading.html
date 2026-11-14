@@ -1,0 +1,14 @@
+@if (eyebrow(); as eyebrowText) {
+  <p class="eyebrow" appReveal [revealDistance]="16">{{ eyebrowText }}</p>
+}
+@let parts = titleParts();
+<h2 class="title" [id]="headingId()" appSplitText>
+  {{ parts.before }}
+  @if (parts.emphasis) {
+    <em>{{ parts.emphasis }}</em>
+  }
+  {{ parts.after }}
+</h2>
+@if (subtitle(); as subtitleText) {
+  <p class="lead subtitle" appReveal [revealDelay]="0.2">{{ subtitleText }}</p>
+}

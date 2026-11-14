@@ -1,0 +1,121 @@
+<section id="sobre" class="section about" aria-labelledby="about-title">
+  <div class="container grid">
+    <div class="media">
+      <app-media-frame
+        class="photo"
+        src="/images/ana-sales-bracos-cruzados.jpg"
+        alt="Dra. Ana Sales sorrindo, de blusa preta e braços cruzados."
+        [width]="854"
+        [height]="1280"
+        [parallax]="7"
+      />
+      <app-media-frame
+        class="inset"
+        src="/images/ana-sales-maos-juntas.jpg"
+        animatedSrc="/media/ana-sales-estudio.gif"
+        alt="Dra. Ana Sales sorrindo em estúdio, com as mãos unidas."
+        [width]="358"
+        [height]="356"
+        objectPosition="50% 25%"
+        revealOrigin="left"
+        [revealDelay]="0.3"
+      />
+    </div>
+
+    <div class="copy">
+      <app-section-heading
+        headingId="about-title"
+        [eyebrow]="content.eyebrow"
+        [title]="content.title"
+        [emphasis]="content.emphasis"
+        [subtitle]="content.subtitle"
+      />
+
+      <p class="body" appReveal>{{ content.body }}</p>
+
+      @if (doctor.philosophy; as philosophy) {
+        <blockquote class="quote" appReveal>
+          <p>{{ philosophy }}</p>
+        </blockquote>
+      }
+
+      <dl class="facts" appReveal revealStagger=".fact">
+        <div class="fact">
+          <dt>Atuação</dt>
+          <dd>{{ doctor.practiceArea }}</dd>
+        </div>
+
+        @if (site.registryLabel) {
+          <div class="fact">
+            <dt>Registro profissional</dt>
+            <dd>
+              {{ site.registryLabel }}
+              @if (site.rqeLabel) {
+                <span class="sep" aria-hidden="true">·</span> {{ site.rqeLabel }}
+              }
+            </dd>
+          </div>
+        } @else if (site.showPending) {
+          <div class="fact">
+            <dt>Registro profissional</dt>
+            <dd><app-pending label="CRM/UF e RQE (se aplicável)" /></dd>
+          </div>
+        }
+
+        @if (doctor.education.length) {
+          <div class="fact">
+            <dt>Formação</dt>
+            @for (item of doctor.education; track item.course) {
+              <dd>
+                {{ item.course }} — {{ item.institution }}
+                @if (item.year) {
+                  ({{ item.year }})
+                }
+              </dd>
+            }
+          </div>
+        } @else if (site.showPending) {
+          <div class="fact">
+            <dt>Formação</dt>
+            <dd><app-pending label="Curso e instituição" /></dd>
+          </div>
+        }
+
+        @if (doctor.career; as career) {
+          <div class="fact">
+            <dt>Trajetória</dt>
+            <dd>{{ career }}</dd>
+          </div>
+        } @else if (site.showPending) {
+          <div class="fact">
+            <dt>Trajetória</dt>
+            <dd><app-pending label="Trajetória profissional" /></dd>
+          </div>
+        }
+
+        @if (doctor.experience; as experience) {
+          <div class="fact">
+            <dt>Experiência</dt>
+            <dd>{{ experience }}</dd>
+          </div>
+        } @else if (site.showPending) {
+          <div class="fact">
+            <dt>Experiência</dt>
+            <dd><app-pending label="Experiência" /></dd>
+          </div>
+        }
+      </dl>
+
+      <div appReveal>
+        <a
+          appButton
+          variant="outline"
+          label="Agendar consulta"
+          [href]="site.primaryCtaHref"
+          [attr.target]="site.primaryCtaIsExternal ? '_blank' : null"
+          [attr.rel]="site.primaryCtaIsExternal ? 'noopener' : null"
+        ></a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,92 @@
+<footer class="footer">
+  <div class="container">
+    <p class="wordmark" aria-hidden="true" appReveal [revealDistance]="60">Ana <em>Sales</em></p>
+
+    <div class="columns">
+      <div class="col col--brand">
+        <p class="brand">{{ config.doctor.name }}</p>
+        <p class="muted">{{ config.doctor.practiceArea }}</p>
+        @if (site.registryLabel) {
+          <p class="muted">
+            {{ site.registryLabel }}
+            @if (site.rqeLabel) {
+              · {{ site.rqeLabel }}
+            }
+          </p>
+        } @else {
+          <app-pending label="CRM/UF · RQE" />
+        }
+      </div>
+
+      <nav class="col" aria-label="Rodapé">
+        <h2 class="col__title">Navegação</h2>
+        <ul role="list">
+          @for (item of site.navItems; track item.id) {
+            <li>
+              <a class="link" [href]="'#' + item.id">{{ item.label }}</a>
+            </li>
+          }
+        </ul>
+      </nav>
+
+      <div class="col">
+        <h2 class="col__title">Contato</h2>
+        <ul role="list">
+          @if (site.whatsappUrl; as whatsappUrl) {
+            <li>
+              <a class="link" [href]="whatsappUrl" target="_blank" rel="noopener"
+                >WhatsApp<span class="visually-hidden"> (abre em nova aba)</span></a
+              >
+            </li>
+          }
+          @if (site.phoneHref; as phoneHref) {
+            <li>
+              <a class="link" [href]="phoneHref">{{ config.contact.phone }}</a>
+            </li>
+          }
+          @if (config.contact.email; as email) {
+            <li>
+              <a class="link" [href]="'mailto:' + email">{{ email }}</a>
+            </li>
+          }
+          @for (line of site.addressLines; track line) {
+            <li class="muted">{{ line }}</li>
+          }
+          @if (!site.hasContactChannel) {
+            <li><a class="link" href="#contato">Ver informações de contato</a></li>
+          }
+        </ul>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      As informações deste site têm caráter informativo e não substituem a consulta médica.
+    </p>
+
+    <div class="bottom">
+      <p>© {{ year }} {{ config.doctor.name }}. Todos os direitos reservados.</p>
+
+      @if (config.privacyPolicyUrl; as privacyUrl) {
+        <a class="link" [href]="privacyUrl">Política de privacidade</a>
+      } @else {
+        <app-pending label="Política de privacidade" />
+      }
+
+      <p>
+        Desenvolvido por
+        @if (config.credit.url; as creditUrl) {
+          <a class="link credit" [href]="creditUrl" target="_blank" rel="noopener"
+            >{{ config.credit.label }}<span class="visually-hidden"> (abre em nova aba)</span></a
+          >
+        } @else {
+          <span class="credit">{{ config.credit.label }}</span>
+        }
+      </p>
+
+      <a class="top" href="#inicio">
+        Voltar ao topo
+        <app-icon name="arrowUp" />
+      </a>
+    </div>
+  </div>
+</footer>

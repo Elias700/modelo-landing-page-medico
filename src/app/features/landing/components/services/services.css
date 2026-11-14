@@ -1,0 +1,130 @@
+:host {
+  display: block;
+}
+
+.services {
+  background: var(--color-white);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.list {
+  display: grid;
+  margin: 0;
+  border-top: 1px solid var(--color-line);
+}
+
+.item {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.card {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  gap: var(--space-sm);
+  height: 100%;
+  padding: var(--space-lg) var(--space-md);
+  overflow: hidden;
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--color-green-deep);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.7s var(--ease-out);
+}
+
+.card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card__index {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-style: italic;
+  color: var(--color-champagne-text);
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+.card__icon {
+  width: 2rem;
+  height: 2rem;
+  color: var(--color-green);
+  transition:
+    color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+.card__title {
+  margin-top: var(--space-md);
+  font-size: var(--fs-xl);
+  line-height: 1.15;
+}
+
+.card__text {
+  max-width: 26rem;
+  color: var(--color-ink-soft);
+  transition: color var(--duration-base) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .card:hover {
+    color: var(--color-ivory);
+  }
+
+  .card:hover::before {
+    transform: scaleY(1);
+  }
+
+  .card:hover .card__index {
+    color: var(--color-champagne);
+  }
+
+  .card:hover .card__icon {
+    color: var(--color-champagne);
+    transform: translateY(-4px) rotate(-6deg);
+  }
+
+  .card:hover .card__text {
+    color: rgb(247 245 240 / 0.78);
+  }
+}
+
+@media (min-width: 600px) {
+  .list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .item:nth-child(odd) {
+    border-right: 1px solid var(--color-line);
+  }
+
+  .card {
+    min-height: 19rem;
+    align-content: start;
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    align-items: start;
+    gap: var(--space-2xl);
+  }
+
+  .intro {
+    position: sticky;
+    top: calc(var(--header-h) + var(--space-lg));
+  }
+}

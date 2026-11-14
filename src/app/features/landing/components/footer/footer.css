@@ -1,0 +1,121 @@
+:host {
+  display: block;
+}
+
+.footer {
+  --muted: rgb(247 245 240 / 0.66);
+  --line: rgb(247 245 240 / 0.16);
+  padding-block: var(--space-xl) var(--space-md);
+  background: var(--color-green-deep);
+  color: var(--color-ivory);
+  overflow: hidden;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 17vw, 17rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  margin-bottom: var(--space-xl);
+}
+
+.wordmark em {
+  color: var(--color-champagne);
+}
+
+.columns {
+  display: grid;
+  gap: var(--space-lg);
+  padding-block: var(--space-lg);
+  border-top: 1px solid var(--line);
+}
+
+.col ul {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0;
+}
+
+.col__title {
+  margin-bottom: var(--space-sm);
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-champagne);
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+}
+
+.muted {
+  color: var(--muted);
+  font-size: var(--fs-sm);
+}
+
+.link {
+  font-size: var(--fs-sm);
+  background: linear-gradient(currentColor, currentColor) left bottom / 0 1px no-repeat;
+  transition:
+    background-size var(--duration-base) var(--ease-out),
+    color var(--duration-fast);
+}
+
+.link:hover {
+  color: var(--color-champagne);
+  background-size: 100% 1px;
+}
+
+.disclaimer {
+  padding-block: var(--space-md);
+  border-top: 1px solid var(--line);
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm) var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--line);
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.credit {
+  color: var(--color-ivory);
+  font-weight: 600;
+}
+
+.top {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  margin-left: auto;
+  color: var(--color-ivory);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.top app-icon {
+  width: 1rem;
+  height: 1rem;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.top:hover app-icon {
+  transform: translateY(-3px);
+}
+
+@media (min-width: 900px) {
+  .columns {
+    grid-template-columns: 1.4fr 1fr 1fr;
+  }
+}

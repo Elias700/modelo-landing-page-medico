@@ -1,0 +1,26 @@
+<section id="como-funciona" class="section consultation" aria-labelledby="consultation-title">
+  <div class="container">
+    <app-section-heading
+      headingId="consultation-title"
+      eyebrow="Como funciona"
+      title="Um atendimento pensado para você."
+      emphasis="para você."
+      subtitle="Do primeiro contato ao acompanhamento, cada etapa é orientada pelas suas necessidades."
+    />
+
+    <div class="timeline">
+      <span class="track" aria-hidden="true"><span class="track__fill"></span></span>
+      <ol class="steps" role="list" appReveal revealStagger=".step">
+        @for (step of steps; track step.title; let i = $index) {
+          <li class="step is-reached">
+            <span class="step__node" aria-hidden="true">0{{ i + 1 }}</span>
+            <h3 class="step__title">
+              <span class="visually-hidden">Etapa {{ i + 1 }}: </span>{{ step.title }}
+            </h3>
+            <p class="step__text">{{ step.description }}</p>
+          </li>
+        }
+      </ol>
+    </div>
+  </div>
+</section>
